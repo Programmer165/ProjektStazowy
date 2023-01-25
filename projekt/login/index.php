@@ -18,11 +18,26 @@ session_start();
     <title>Moja Strona</title>
 </head>
 <body>
+    <style type="text/css">
+        #button
+        {
+            padding: 10px;
+            width: 100px;
+            color: white;
+            background-color: burlywood;
+            border: none;   
+        }
+    </style>
 
-    <a href="logout.php">Logout</a>
+    <a id="button" href="logout.php">Wyloguj</a>
     <h1>To jest strona index </h1>
 
     <br>
-    Witaj, <?php echo $user_data['uzytkownik_nazwa']; ?>
+    Witaj, <?php echo $user_data['imie'];?>.<br><br>
+    <a>Twoje dane:</a><br>
+    imię: <?php echo $user_data['imie'];?><br>
+    nazwisko: <?php echo $user_data['nazwisko'];?><br>
+    e-mail: <?php echo $user_data['mail'];?><br>
+
 </body>
 </html>

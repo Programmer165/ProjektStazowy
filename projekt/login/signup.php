@@ -10,14 +10,17 @@ session_start();
     {
         // wpisane dane użytkownika (login, hasło)
         $user_name = $_POST['uzytkownik_nazwa'];
+        $_name = $_POST['imie'];
+        $s_name = $_POST['nazwisko'];
+        $_mail = $_POST['mail'];
         $password = $_POST['haslo'];
     
-        // założenie jeśli nazwa i hasło nie są puste i nazwa nie jest numeryczna
-        if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+        // założenie jeśli imie != nazwisko, imie nazwisko, nazwa użytkownika i hasło nie są puste i nazwa nie jest numeryczna
+        if(!empty($user_name) && !empty($_name) && !empty($s_name) && $_name != $s_name && !empty($_mail) && !empty($password) && !is_numeric($user_name))
         {
             // id użytkownika do 20
             $user_id = random_num(20);
-            $query = "insert into users (uzytkownik_id, uzytkownik_nazwa, haslo) values ('$user_id', '$user_name', '$password')";// specjalna komenda słowna która wywołuje pewną akcję dla MySQL
+            $query = "insert into users (uzytkownik_id, imie, nazwisko, mail, uzytkownik_nazwa, haslo) values ('$user_id', '$_name', '$s_name', '$_mail', '$user_name', '$password')";// specjalna komenda słowna która wywołuje pewną akcję dla MySQL
         
             // pyta bazę i odsyła do strony logownia (po rejestracji)
             mysqli_query($con, $query);
@@ -75,8 +78,17 @@ session_start();
         <form method="post">
             <div style="font-size: 20px; margin: 10px;">Rejestracja</div>
             
+            <a>imię:</a>
+            <input id="text" type="imie" name="imie"><br><br>
+            <a>nazwisko:</a>
+            <input id="text" type="nazwisko" name="nazwisko"><br><br>
+            <a>nazwa użytkownika:</a>
             <input id="text" type="text" name="uzytkownik_nazwa"><br><br>
+            <a>hasło:</a>
             <input id="text" type="password" name="haslo"><br><br>
+            <a>e-mail:</a>
+            <input id="text" type="mail" name="mail"><br><br>
+            
 
             <input id="button" type="submit" name="Zarejestruj"><br><br>
             <a href="login.php">Zaloguj się</a>
