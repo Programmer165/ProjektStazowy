@@ -5,7 +5,7 @@ Repozytorium utworzone na potrzeby rekrutacyjne.
 
 Aktualności:
 - Projekt umożliwiają rejestrację oraz zalogowanie użytkownika po podłączeniu do bazy danych.
-   ( Projekt posiada w swoim kodzie domyślnie zaiplementowane GUI umożliwiające łatwe wykorzystanie aktualnych funkcji kodu. )
+   ( Projekt posiada w swoim kodzie zaiplementowane GUI umożliwiające łatwe wykorzystanie aktualnych funkcji kodu. )
       * Wymagane parametry w bazie: (id, id użytkownika, imię, nazwisko, hasło, nazwa użytkownika, mail, data).
 
 - Projekt tworzy wiadomość i wysyła ją na podany adres mailowy skrzynki z informacją o utworzeniu konta w bazie danych.
