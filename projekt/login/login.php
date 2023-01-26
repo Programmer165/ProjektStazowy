@@ -84,9 +84,9 @@ session_start();
         <form method="post">
             <div style="font-size: 20px; margin: 10px;">Logowanie</div>
             
-            <a>login:</a>
+            <label>login:</label>
             <input id="text" type="text" name="uzytkownik_nazwa"><br><br>
-            <a>hasło:</a>
+            <label>hasło:</label>
             <input id="text" type="password" name="haslo"><br><br>
 
             <input id="button" type="submit" name="Login"><br><br>

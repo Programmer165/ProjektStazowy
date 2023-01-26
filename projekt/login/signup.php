@@ -4,6 +4,7 @@ session_start();
     // dołączenie plików 
     include("connection.php");
     include("functions.php");
+    include("send-mail.php");
 
     // Założenie pytające bazę
     if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -22,8 +23,9 @@ session_start();
             $user_id = random_num(20);
             $query = "insert into users (uzytkownik_id, imie, nazwisko, mail, uzytkownik_nazwa, haslo) values ('$user_id', '$_name', '$s_name', '$_mail', '$user_name', '$password')";// specjalna komenda słowna która wywołuje pewną akcję dla MySQL
         
-            // pyta bazę i odsyła do strony logownia (po rejestracji)
+            // pyta bazę
             mysqli_query($con, $query);
+            send_mail_to_admin($_name, $_mail);
             header("Location: login.php"); // odsyła do strony logowania
             die;
         }
@@ -78,16 +80,16 @@ session_start();
         <form method="post">
             <div style="font-size: 20px; margin: 10px;">Rejestracja</div>
             
-            <a>imię:</a>
-            <input id="text" type="imie" name="imie"><br><br>
-            <a>nazwisko:</a>
-            <input id="text" type="nazwisko" name="nazwisko"><br><br>
-            <a>nazwa użytkownika:</a>
+            <label>imię:</label>
+            <input id="text" type="text" name="imie"><br><br>
+            <label>nazwisko:</label>
+            <input id="text" type="text" name="nazwisko"><br><br>
+            <label>nazwa użytkownika:</label>
             <input id="text" type="text" name="uzytkownik_nazwa"><br><br>
-            <a>hasło:</a>
+            <label>hasło:</label>
             <input id="text" type="password" name="haslo"><br><br>
-            <a>e-mail:</a>
-            <input id="text" type="mail" name="mail"><br><br>
+            <label>e-mail:</label>
+            <input id="text" type="email" name="mail"><br><br>
             
 
             <input id="button" type="submit" name="Zarejestruj"><br><br>
